@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState ,useEffect} from "react";
+import axios from "axios";
+import Input from "./input";
+import Output from "./output";
 
-function App() {
+const App = () => {
+  const [place, setPlace] = useState('');
+  const [data,setData] =useState({});
+  const baseURL = `https://api.weatherapi.com/v1/current.json?key=05ccd01d3f294845bc0193119221201&q=${place}&aqi=yes`;
+
+  useEffect(() => {
+    place !== "" &&
+      axios
+        .get(baseURL)
+        .then((res) => {
+         let obj={};
+         obj['message'] = "success";
+         obj['status'] = res.data.current.condition.text;
+         obj['status_icon'] = res.data.current.condition.icon;
+         obj['name'] = res.data.location.name;
+         obj['region'] = res.data.location.region;
+         obj['country'] = res.data.location.country;
+         obj['lat'] = res.data.location.lat;
+         obj['lon'] = res.data.location.lon;
+         obj['localtime'] = res.data.location.localtime;
+         obj['location'] = res.data.location.tz_id;
+        // console.log(obj);
+         setData(obj);
+        })
+        .catch((err) => {
+          let obj={};
+          obj['meesage'] = 'error';
+          setData(obj);
+          console.log("err");
+        });
+  }, [place]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Input setPlace={setPlace} />
+    <Output data={data}/>
+    </>
+  )
 }
-
 export default App;
