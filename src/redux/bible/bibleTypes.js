@@ -1,0 +1,4 @@
+export const REQUEST_BIBLE = "REQUEST_BIBLE";
+export const SUCCESS_BIBLE = "SUCCESS_BIBLE";
+export const ERROR_BIBLE = "ERROR_BIBLE";
+export const DELETE_BIBLE = "DELETE_BIBLE";
