@@ -1,9 +1,7 @@
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
-import { getThemeProps } from '@mui/system';
 import { useNavigate } from "react-router-dom";
 
 const Input = () => {
@@ -26,40 +24,9 @@ const Input = () => {
         backgroundColor: "Blue",
         height: "60%",
     }
-
-    // const [headTail, setHeadTail] = useState("")
     const [toss, setToss] = useState("")
     const [status, setStatus] = useState("")
     const [check, setCheck] = useState(2);
-
-    // const handleChange = (e) => {
-    //     console.log(e, "mmmmmmmm");
-    //     setToss(e)
-    //     console.log(toss,"Yyyyyyyyyyyyyyyy");
-
-    //     if (e == 'head' || e == 'head')
-    //         setHeadTail(5 % 2 == 0 ? 'Tail' : 'Head')
-    //     else
-    //         setHeadTail(5 % 2 == 0 ? 'Head' : 'Tail')
-    //     if ((toss == '1head' && headTail == 'Head') || (toss == '1tail' && headTail == 'Tail')) {
-    //         setStatus("csk wins toss")
-    //     }
-    //     if ((toss == '1head' && headTail == 'Tail') || (toss == '1tail' && headTail == 'Head')) {
-    //         setStatus("csk loss toss")
-    //     }
-    //     if ((toss == '2head' && headTail == 'Head') || (toss == '2tail' && headTail == 'Tail')) {
-    //         setStatus("MI wins toss")
-    //     }
-    //     if ((toss == '2head' && headTail == 'Tail') || (toss == '2tail' && headTail == 'Head')) {
-    //         setStatus("MI loss toss")
-    //     }
-
-
-    // }
-
-    useEffect(() => {
-        console.log('useEffect=====', toss)
-    }, [toss]);
 
 
     let headTail = "";
